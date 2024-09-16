@@ -5,8 +5,8 @@ var target_velocity = Vector3.ZERO
 @export var jump_speed = 10.0
 @export var friccion = 1.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-
+@onready var GETEXP: AudioStreamPlayer3D = $componentes/AudioStreamPlayer3D
+const EXP = preload("res://Componentes/particulas/exp.tscn")
 
 func _physics_process(delta: float):
 	var direccion = Vector3.ZERO
@@ -45,5 +45,6 @@ func _physics_process(delta: float):
 
 
 func _on_destructor_body_entered(body: Node3D) -> void:
-	if(body.name=="ExpBody"):
+	if "ExpBody" in body.name:
+		GETEXP.play()
 		body.queue_free()
