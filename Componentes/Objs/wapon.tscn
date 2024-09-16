@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://clw3ipe7lemep"]
+
+[ext_resource type="Script" path="res://Scripts/logic/weapon.gd" id="1_acdtf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u35j8"]
+
+[node name="Wapon" type="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_u35j8")
+script = ExtResource("1_acdtf")

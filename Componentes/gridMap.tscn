@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://wytep4gyeevf"]
+
+[ext_resource type="MeshLibrary" uid="uid://rkyymripidq" path="res://Componentes/Objs/meshes.tres" id="1_1v7l4"]
+
+[node name="GridMap" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_1v7l4")
