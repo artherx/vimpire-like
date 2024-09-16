@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cga2ha6u3ikkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qioqi"]
+albedo_color = Color(0.541176, 1, 0.556863, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gyhme"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ivgdu"]
+
+[node name="ExpBody" type="RigidBody3D"]
+mass = 0.039
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qioqi")
+mesh = SubResource("SphereMesh_gyhme")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("SphereShape3D_ivgdu")

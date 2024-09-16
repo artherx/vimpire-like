@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 var target_velocity = Vector3.ZERO
-@export var speed = 5
-@export var jump_speed = 10
-@export var friccion = 1
+@export var speed = 5.0
+@export var jump_speed = 10.0
+@export var friccion = 1.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 
 
 func _physics_process(delta: float):
@@ -25,13 +26,11 @@ func _physics_process(delta: float):
 		
 	target_velocity.x = direccion.x * (speed/friccion)
 	target_velocity.z = direccion.z * (speed/friccion)
-
-	# Verificación de si está en el suelo
+	
 	if is_on_floor():
 		# Si está en el suelo, reinicia la velocidad en Y y permite el salto
 		if Input.is_physical_key_pressed(KEY_SPACE):
-			velocity.y = jump_speed  # Velocidad de salto
-			print("salto")
+			velocity.y = jump_speed
 		else:
 			velocity.y = 0  # Reiniciar velocidad Y cuando toca el suelo
 	else : 
@@ -41,6 +40,10 @@ func _physics_process(delta: float):
 	# Aplicar la velocidad horizontal (X y Z)
 	velocity.x = target_velocity.x
 	velocity.z = target_velocity.z
-	print("velocidad",velocity)
 	# Mover el personaje con la gravedad y la velocidad horizontal aplicada
 	move_and_slide()
+
+
+func _on_destructor_body_entered(body: Node3D) -> void:
+	if(body.name=="ExpBody"):
+		body.queue_free()

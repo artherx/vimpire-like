@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkpn0d0h6efdg"]
+[gd_scene load_steps=8 format=3 uid="uid://bkpn0d0h6efdg"]
 
 [ext_resource type="Script" path="res://Scripts/logic/movimineto.gd" id="1_epxjn"]
+[ext_resource type="Script" path="res://Scripts/absorber.gd" id="2_u1y46"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4ofsd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jlrvk"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tnab4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fmhii"]
+radius = 1.26067
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sbos7"]
+radius = 0.909056
+height = 2.37124
 
 [node name="Player2" type="CharacterBody3D"]
 script = ExtResource("1_epxjn")
@@ -20,3 +28,23 @@ shape = SubResource("CylinderShape3D_jlrvk")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, -0.0249891, 0.534558, 0.522576)
 mesh = SubResource("CylinderMesh_tnab4")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+
+[node name="Iman" type="Area3D" parent="."]
+gravity_space_override = 3
+gravity_point = true
+script = ExtResource("2_u1y46")
+
+[node name="RadioIman" type="CollisionShape3D" parent="Iman"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_fmhii")
+
+[node name="Destructor" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Destructor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.188942)
+shape = SubResource("CapsuleShape3D_sbos7")
+
+[connection signal="body_entered" from="Iman" to="Iman" method="_on_body_entered"]
+[connection signal="body_entered" from="Destructor" to="." method="_on_destructor_body_entered"]
