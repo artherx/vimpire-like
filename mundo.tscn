@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bkpn0d0h6efdg" path="res://Componentes/player2.tscn" id="2_4b6h1"]
 [ext_resource type="PackedScene" uid="uid://clw3ipe7lemep" path="res://Componentes/Objs/wapon.tscn" id="2_wbc04"]
-[ext_resource type="PackedScene" uid="uid://cga2ha6u3ikkg" path="res://Componentes/particulas/exp.tscn" id="3_qu8bo"]
+[ext_resource type="PackedScene" uid="uid://cpji4q302jthf" path="res://Componentes/sound/wave.tscn" id="3_dmx0c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_abvxw"]
 
@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07371e-05, 0.7, 0.00396776)
 shape = SubResource("BoxShape3D_lkjmi")
 
 [node name="Player2" parent="." instance=ExtResource("2_4b6h1")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0152589, 0.542606, -0.0876552)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0152589, 0.542606, -0.819435)
 
 [node name="Wapon" parent="Player2" instance=ExtResource("2_wbc04")]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -1.03707, 0, 0)
@@ -51,17 +51,11 @@ mesh = SubResource("BoxMesh_ucr02")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207, -0.107498, 0.0292358)
 shape = SubResource("BoxShape3D_221ab")
 
-[node name="ExpBody" parent="." instance=ExtResource("3_qu8bo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18931, 0.859979, 2.28361)
-
-[node name="ExpBody2" parent="." instance=ExtResource("3_qu8bo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18931, 0.859979, 2.28361)
-
-[node name="ExpBody3" parent="." instance=ExtResource("3_qu8bo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18931, 0.859979, 2.28361)
-
-[node name="ExpBody4" parent="." instance=ExtResource("3_qu8bo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18931, 0.859979, 2.28361)
-
-[node name="ExpBody5" parent="." instance=ExtResource("3_qu8bo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18931, 0.859979, 2.28361)
+[node name="Wave" parent="." instance=ExtResource("3_dmx0c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.550401)
+pulse_hz = 80.0
+attack = 0.01
+decay = 0.05
+sustain = 0.2
+release = 0.1
+max_amplitude = 0.8
